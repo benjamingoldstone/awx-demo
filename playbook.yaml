@@ -1,0 +1,16 @@
+---
+
+- name: SONiC Management Framework CLI configuration examples
+  hosts: SONiC-GNS3-demo1
+  gather_facts: no
+  connection: network_cli
+  tasks:
+    - name: Add VLAN entry
+      dellemc.enterprise_sonic.sonic_config:
+        commands: ['interface Vlan 700','exit']
+        save: yes
+      register: config_op
+    - name: Test SONiC single command
+      dellemc.enterprise_sonic.sonic_command:
+        commands: 'show vlan'
+      register: cmd_op
