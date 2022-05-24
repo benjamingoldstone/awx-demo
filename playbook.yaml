@@ -1,7 +1,7 @@
 ---
 
 - name: SONiC Management Framework CLI configuration examples
-  hosts: gns3-demo-spine1
+  hosts: all
   gather_facts: no
   connection: network_cli
   tasks:
