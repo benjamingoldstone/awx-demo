@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+    
+    - name: Add a user group
+      group:
+        name: "{{ group_name }}"
+        state: present

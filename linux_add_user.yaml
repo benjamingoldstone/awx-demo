@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: yes
+
+  vars:
+    # NOTICE!!!:
+    # DO NOT PUT PLAIN TEXT PASSWORDS HERE!
+    # use encrypted passwords or put them in Ansible vault
+    # but this is just a demo
+    vaulted_password: mySecret
+
+  tasks:
+    - name: Add a user
+      user:
+        name: "{{ user_name }}"
+        comment: "{{ comment }}"
+        groups: docker
+        shell: /usr/bin/sonic-cli #can of course set this to /bin/bash instead
+        password: "{{ vaulted_password | password_hash('sha512') }}"
+
+          #    - name: Add user anita with a password
+          #      user:
+          #       name: anita
+          #        password: "{{ vaulted_password | password_hash('sha512') }}"
+          #        update_password: on_create
