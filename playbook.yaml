@@ -7,7 +7,7 @@
   tasks:
     - name: Add VLAN entry
       dellemc.enterprise_sonic.sonic_config:
-        commands: ['interface Vlan 700','exit']
+        commands: ['interface Vlan 10','exit']
         save: yes
       register: config_op
     - name: Test SONiC single command

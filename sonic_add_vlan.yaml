@@ -1,0 +1,13 @@
+---
+
+- name: Add VLAN to hosts
+  hosts: all
+  gather_facts: no
+  connection: httpapi
+  tasks:
+   - name: Configure VLANs
+     dellemc.enterprise_sonic.sonic_vlans:
+        config:
+         - vlan_id: "{{ vlan_id }}"
+        state: merged
+     register: sonic_vlans_output
